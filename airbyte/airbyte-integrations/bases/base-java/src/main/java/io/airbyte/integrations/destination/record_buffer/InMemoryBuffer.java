@@ -28,17 +28,17 @@ public class InMemoryBuffer implements BufferStorage {
   // "To optimize the number of parallel operations for a load,
   // we recommend aiming to produce data files roughly 100-250 MB (or larger) in size compressed."
   // JY: Changed MAX_TOTAL_BUFFER_SIZE_BYTES to 10 MBs
-  public static final long MAX_PER_STREAM_BUFFER_SIZE_BYTES = 10 * 1024 * 1024; // 200 MB
+  public static final long MAX_PER_STREAM_BUFFER_SIZE_BYTES = 200 * 1024 * 1024; // 200 MB
   // Other than the per-file size limit, we also limit the total size (which would limit how many
   // concurrent streams we can buffer simultaneously too)
   // Since this class is storing data in memory, the buffer size limits below are tied to the
   // necessary RAM space.
 
-  // JY: Changed MAX_TOTAL_BUFFER_SIZE_BYTES to 100 MBs
-  public static final long MAX_TOTAL_BUFFER_SIZE_BYTES = 100 * 1024 * 1024; // 1 GB
+  // JY: Changed MAX_TOTAL_BUFFER_SIZE_BYTES to 3 gbs
+  public static final long MAX_TOTAL_BUFFER_SIZE_BYTES = 1024 * 1024 * 1024; // 1 GB
   // we limit number of stream being buffered simultaneously anyway
-  // JY: Changed MAX_TOTAL_BUFFER_SIZE_BYTES to 5
-  public static final int MAX_CONCURRENT_STREAM_IN_BUFFER = 3;
+  // JY: Changed MAX_CONCURRENT_STREAM_IN_BUFFER to 5000
+  public static final int MAX_CONCURRENT_STREAM_IN_BUFFER = 5000;
 
   private final String fileExtension;
   private final ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();

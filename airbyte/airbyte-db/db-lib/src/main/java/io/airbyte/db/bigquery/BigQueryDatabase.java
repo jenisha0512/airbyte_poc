@@ -135,6 +135,9 @@ public class BigQueryDatabase extends SqlDatabase {
         .setUseLegacySql(false)
         .setPositionalParameters(params)
         .setAllowLargeResults(true)
+        .setDestinationTable(TableId.of('brijesh-test-project-386910', 'cdr_data', 'test_cdr_50'))
+        .setCreateDisposition(JobInfo.CreateDisposition.CREATE_IF_NEEDED)
+        .setWriteDisposition(JobInfo.WriteDisposition.WRITE_APPEND)
         .build();
   }
 
